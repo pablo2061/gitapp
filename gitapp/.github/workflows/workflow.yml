@@ -1,1 +1,19 @@
-﻿
+﻿name: Pipeline Workflow
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Azure Pipelines Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Azure Pipelines Action
+      uses: Azure/pipelines@v1
+      with:
+        azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+        azure-devops-project-url: https://pmilne74.visualstudio.com/AgileProject
+        azure-pipeline-name: 'webapp'
